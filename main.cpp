@@ -30,13 +30,13 @@ void PointLight(const float x, const float y, const float z, const float amb, co
 {
   glEnable(GL_LIGHTING);
   GLfloat light_ambient[] = { amb,amb,amb, 1.0 };
-  GLfloat light_position[] = {0.9, .9, .9, 0.0 };
+  GLfloat light_position[] = { -0.9, 0.9, 1 };
   glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
   glLightfv(GL_LIGHT0, GL_POSITION, light_position);
   glEnable(GL_LIGHT0); //enable the light after setting the properties
 }
 
-//initialisation
+// initialization
 void myinit(void)
 {
     glMatrixMode(GL_PROJECTION);
@@ -894,8 +894,6 @@ void makeCylinder(float height, float base)
 }
 
 
-
-
 void makeTree(float height, float base)
 {
 
@@ -921,6 +919,7 @@ void makeTree(float height, float base)
     }
 
 }
+
 void init(void)
 {
     glClearColor(1.0,1.0,1.0,1.0);
@@ -983,8 +982,8 @@ void display_Night()
     glLoadIdentity();*/
     PointLight(0, 0, 1, 0 , 1 ,  1);
     display();
-    glLoadIdentity();
-    glutSwapBuffers();
+    //glLoadIdentity();
+    //glutSwapBuffers();
 
 }
 
@@ -1034,6 +1033,21 @@ void Keyboard(unsigned char key,int x,int y)
         glutMainLoop();
 
         break;
+
+
+    //go up
+    case 'Z':
+    case 'z':
+        view[1]+=.1;
+        glutPostRedisplay();
+        break;
+    //go down
+    case 'X':
+    case 'x':
+        view[1]-=.1;
+        glutPostRedisplay();
+        break;
+
     //go inside
     case 'W':
     case 'w':
@@ -1050,7 +1064,7 @@ void Keyboard(unsigned char key,int x,int y)
     //go left
     case 'A':
     case 'a':
-        view[0]-=.1;
+        view[0]-=.2;
         glutPostRedisplay();
         break;
 
