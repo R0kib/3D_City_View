@@ -8,6 +8,8 @@
 double view[3]= {2,2,12.9};
 double look[3]= {2,2,2};
 int flag=-1;
+double sun = 1;
+
 void steps(void);
 void window(void);
 void gate(void);
@@ -23,6 +25,16 @@ struct tm *newtime;
 time_t ltime;
 
 GLfloat angle1;
+
+void PointLight(const float x, const float y, const float z, const float amb, const float diff, const float spec)
+{
+  glEnable(GL_LIGHTING);
+  GLfloat light_ambient[] = { amb,amb,amb, 1.0 };
+  GLfloat light_position[] = {0.9, .9, .9, 0.0 };
+  glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+  glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+  glEnable(GL_LIGHT0); //enable the light after setting the properties
+}
 
 //initialisation
 void myinit(void)
@@ -838,12 +850,12 @@ void drawRoadLines()
 
 }
 
-void drawSun()
+void drawSun(double z)
 {
 
     GLfloat mat_ambient[]= {0, 0, 0, 0};
-    GLfloat mat_specular[]= {0.8,0.8,0,0};
-    GLfloat mat_diffuse[]= {0.8,0.8,0,0};
+    GLfloat mat_specular[]= {0.8 ,0.8 , z,0};
+    GLfloat mat_diffuse[]= {0.8 , 0.8 , z,0};
     GLfloat mat_shininess[]= {50};
     matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
 
@@ -934,7 +946,14 @@ void display(void)
     house();
     drawRoad();
     drawRoadLines();
-    drawSun();
+    if(sun == 1)
+    {
+        drawSun(0.1);
+    }
+    else if(sun==0)
+    {
+        drawSun(1);
+    }
 
     glPushMatrix();
     glRotatef(x,1.0,0.0,0.0);
@@ -950,10 +969,71 @@ void display(void)
 
 }
 
+void display_Day()
+{
+    display();
+}
+
+
+void display_Night()
+{
+    /*glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_DEPTH_TEST);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();*/
+    PointLight(0, 0, 1, 0 , 1 ,  1);
+    display();
+    glLoadIdentity();
+    glutSwapBuffers();
+
+}
+
 void Keyboard(unsigned char key,int x,int y)
 {
     switch(key)
     {
+    case 'M':
+    case 'm':
+
+        glutDestroyWindow(1);
+        glutInitWindowSize(1366,768);
+        glutInitWindowPosition(0,0);
+        glutCreateWindow("3D Farm House");
+        glutKeyboardFunc(Keyboard);
+        myinit();
+        init();
+        sun = 1;
+        glutDisplayFunc(display_Day);
+        glEnable(GL_LIGHTING);
+        glEnable(GL_LIGHT0);
+        glShadeModel(GL_SMOOTH);//smooth shaded
+        glEnable(GL_DEPTH_TEST);//to remove hidden surface
+        glEnable(GL_NORMALIZE);//to make normal vector to unit vector
+        glClearColor(0.7, 0.9, 1, 0 );
+        glutMainLoop();
+
+        break;
+        break;
+    case 'N':
+    case 'n':
+        glutDestroyWindow(1);
+        glutInitWindowSize(1366,768);
+        glutInitWindowPosition(0,0);
+        glutCreateWindow("3D Farm House");
+        glutKeyboardFunc(Keyboard);
+        myinit();
+        init();
+        sun = 0;
+        glutDisplayFunc(display_Night);
+        glEnable(GL_LIGHTING);
+        glEnable(GL_LIGHT0);
+        glShadeModel(GL_SMOOTH);//smooth shaded
+        glEnable(GL_DEPTH_TEST);//to remove hidden surface
+        glEnable(GL_NORMALIZE);//to make normal vector to unit vector
+        glClearColor(0, 0, 0, 0 );
+        glutMainLoop();
+
+        break;
     //go inside
     case 'W':
     case 'w':
@@ -1058,6 +1138,8 @@ void Keyboard(unsigned char key,int x,int y)
 
 }
 
+
+
 int main(int argc,char**argv)
 {
     printf("**<<Press G for Gate on & off>>**\n");
@@ -1072,17 +1154,17 @@ int main(int argc,char**argv)
     glutInitWindowSize(1366,768);
     glutInitWindowPosition(0,0);
     glutCreateWindow("3D Farm House");
+    glutKeyboardFunc(Keyboard);
     myinit();
     init();
     glutDisplayFunc(display);
-    glutKeyboardFunc(Keyboard);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glShadeModel(GL_SMOOTH);//smooth shaded
     glEnable(GL_DEPTH_TEST);//to remove hidden surface
     glEnable(GL_NORMALIZE);//to make normal vector to unit vector
-    glClearColor(0.7, 0.9, 1, 0); // day
-    //glClearColor(0, 0, 0 ,0); // night
+    glClearColor(0.7, 0.9, 1, 0);
+
     glutMainLoop();
     return 0;
 }
