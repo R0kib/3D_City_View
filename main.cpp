@@ -1079,6 +1079,8 @@ void display(void)
     glCallList(makeaTree);
     glPopMatrix();
 
+
+
     //drawCloud();
 
     if(sun == 1)
@@ -1092,6 +1094,18 @@ void display(void)
         drawStar();
     }
 
+    //adding more houses
+    glTranslated(-20, 0, 0);
+    house();
+    compound();
+
+    glTranslated(40, 0, 0);
+    house();
+    compound();
+
+    glTranslated(20, 0, 0);
+    house();
+    compound();
 
 
     glFlush();
