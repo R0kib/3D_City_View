@@ -4,9 +4,10 @@
 #include <time.h>
 #include<math.h>
 #include<iostream>
+#include <cstdlib>
 
-double view[3]= {2,2,12.9};
-double look[3]= {2,2,2};
+double view[3]= {2, 4.3, 15.9};
+double look[3]= {2, 2, 2};
 int flag=-1;
 double sun = 1;
 
@@ -850,6 +851,8 @@ void drawRoadLines()
 
 }
 
+
+//draw Sun
 void drawSun(double z)
 {
 
@@ -860,12 +863,77 @@ void drawSun(double z)
     matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
 
 
-    glPushMatrix(); //Sun
+    glPushMatrix();
     glTranslatef( 1.5, 20, -20.0);
     gluDisk(Disk, 0, 2, 32, 8);
 
 
     glPopMatrix();
+}
+
+//making star
+void makeStar()
+{
+
+    GLfloat mat_ambient[]= {0, 0, 0, 0};
+    GLfloat mat_specular[]= {0.8 ,0.8 , 1, 0};
+    GLfloat mat_diffuse[]= {0.8 , 0.8 , 1, 0};
+    GLfloat mat_shininess[]= {50};
+    matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
+
+
+    glPushMatrix();
+    glTranslatef( -23.5, 30, -20.0);
+    gluDisk(Disk, 0, .1, 20, 8);
+    glPopMatrix();
+}
+
+void drawStar()
+{
+
+    glTranslated(-15,5,0);
+    makeStar();
+
+    glTranslated(-8,-3,0);
+    makeStar();
+
+    glTranslated(0,0,0);
+    makeStar();
+
+    glTranslated(9,-5,0);
+    makeStar();
+
+    glTranslated(15,5,0);
+    makeStar();
+
+    glTranslated(13,-8, 0);
+    makeStar();
+
+    glTranslated(19,-12, 0);
+    makeStar();
+
+    glTranslated(19,-12, 0);
+    makeStar();
+
+    glTranslated(22, 15, 0);
+    makeStar();
+
+
+    glTranslated(26,-3,0);
+    makeStar();
+
+    glTranslated(34,2,0);
+    makeStar();
+
+
+
+    //check if loop is work then make stars using loop
+   /* for(int x=-30, y=-6; x<70 && y<20 ; x+=10, y+=.5)
+    {
+
+        glTranslated(x, y, 0);
+        makeStar();
+    }*/
 }
 
 void drawCloud()
@@ -933,8 +1001,8 @@ void makeCylinder(float height, float base)
 {
 
     GLfloat mat_ambient[]= {0, 0, 0, 0};
-    GLfloat mat_specular[]= {0.4,0.2,0.1,0};
-    GLfloat mat_diffuse[]= {0, 0, 0, 0};
+    GLfloat mat_specular[]= {0, 0.4 ,0.1, 0};
+    GLfloat mat_diffuse[]= {0.3, 0 , 0, 0};
     GLfloat mat_shininess[]= {50};
     matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
 
@@ -995,10 +1063,11 @@ void display(void)
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    gluLookAt(view[0],view[1],view[2],look[0],look[1],look[2],0.0,1.0,0.0);
+    gluLookAt(view[0],view[1],view[2],look[0],look[1],look[2], 0.0, 1.0, 0.0);
     earth();
     compound();
     house();
+
     drawRoad();
     drawRoadLines();
 
@@ -1020,6 +1089,7 @@ void display(void)
     else if(sun==0)
     {
         drawSun(1);
+        drawStar();
     }
 
 
@@ -1192,8 +1262,8 @@ void Keyboard(unsigned char key,int x,int y)
     case 'f':
     case 'F':
         view[0]=2;
-        view[1]=2;
-        view[2]=12.9;
+        view[1]=4.2;
+        view[2]=15.9;
         look[0]=2;
         look[1]=2;
         look[2]=3;
@@ -1203,7 +1273,7 @@ void Keyboard(unsigned char key,int x,int y)
     case 'B':
         view[0]=1;
         view[1]=6;
-        view[2]=-7;
+        view[2]=-12;
         look[0]=2;
         look[1]=4;
         look[2]=2;
