@@ -902,18 +902,25 @@ void drawCloud()
 
 void makeClouds()
 {
+
     glPushMatrix();
-    glTranslatef( 5.2, 3.2, -2.0);
+    glTranslatef( -8.2, 3.8, -10.0);
+    drawCloud();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslatef( 5.2, 3.2, -10.0);
     drawCloud();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef( 17.0, -1.0, -3.0);
+    glTranslatef( 17.0, 1.0, -10.0);
     drawCloud();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef( 24.0, 4.0, -3.0);
+    glTranslatef( 24.0, 5.5, -10.0);
     drawCloud();
     glPopMatrix();
 }
@@ -971,7 +978,7 @@ void makeTree(float height, float base)
 
 void init(void)
 {
-    glClearColor(1.0,1.0,1.0,1.0);
+    glClearColor(0, 0.4, 0.1, 0);
     glShadeModel(GL_SMOOTH);
     glEnable(GL_DEPTH_TEST);
     makeaTree=glGenLists(1);
@@ -1003,11 +1010,12 @@ void display(void)
     glCallList(makeaTree);
     glPopMatrix();
 
-    drawCloud();
-    makeClouds();
+    //drawCloud();
+
     if(sun == 1)
     {
         drawSun(0.1);
+        makeClouds();
     }
     else if(sun==0)
     {
