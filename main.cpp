@@ -868,6 +868,55 @@ void drawSun(double z)
     glPopMatrix();
 }
 
+void drawCloud()
+{
+    GLfloat mat_ambient[]= {0, 0, 0, 0};
+    GLfloat mat_specular[]= {1.0 ,1.0 , 1,0};
+    GLfloat mat_diffuse[]= {1 ,1 , 1,0};
+    GLfloat mat_shininess[]= {50};
+    matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
+
+
+    glPushMatrix();
+    glTranslatef( -6.5, 10.2, -4.0);
+    gluDisk(Disk, 0, 1, 25, 8);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef( -5.0, 9.5, -4.0);
+    gluDisk(Disk, 0, 1, 25, 8);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef( -5.5, 11.2, -4.0);
+    gluDisk(Disk, 0, 1, 25, 8);
+    glPopMatrix();
+
+     glPushMatrix();
+    glTranslatef( -4.2, 10.9, -4.0);
+    gluDisk(Disk, 0, 1, 25, 8);
+    glPopMatrix();
+
+
+}
+
+void makeClouds()
+{
+    glPushMatrix();
+    glTranslatef( 5.2, 3.2, -2.0);
+    drawCloud();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef( 17.0, -1.0, -3.0);
+    drawCloud();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef( 24.0, 4.0, -3.0);
+    drawCloud();
+    glPopMatrix();
+}
 
 //new tree adding
 GLuint makeaTree;
@@ -945,6 +994,17 @@ void display(void)
     house();
     drawRoad();
     drawRoadLines();
+
+    glPushMatrix();
+    glRotatef(x,1.0,0.0,0.0);
+    glRotatef(y,0.0,1.0,0.0);
+    glRotatef(z,0.0,0.0,1.0);
+    glTranslated(0.0, 0.5, -0.55);
+    glCallList(makeaTree);
+    glPopMatrix();
+
+    drawCloud();
+    makeClouds();
     if(sun == 1)
     {
         drawSun(0.1);
@@ -954,13 +1014,7 @@ void display(void)
         drawSun(1);
     }
 
-    glPushMatrix();
-    glRotatef(x,1.0,0.0,0.0);
-    glRotatef(y,0.0,1.0,0.0);
-    glRotatef(z,0.0,0.0,1.0);
-    glTranslated(0.0, 0.5, -0.55);
-    glCallList(makeaTree);
-    glPopMatrix();
+
 
     glFlush();
     glutSwapBuffers();
