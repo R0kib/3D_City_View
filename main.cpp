@@ -824,7 +824,20 @@ void drawRoad()
     glutSolidCube(0.5);
     glPopMatrix();
 }
+void car()
+{
+    GLfloat	ambient1[]= {0, 0, 0, 0};
+    GLfloat specular1[]= {0.7,0,0,0}; //1111
+    GLfloat diffuse1[]= {0.7,0,0,0};
+    GLfloat mat_shininess[]= {0}; //50
+    matprop(ambient1,diffuse1,specular1,mat_shininess);
 
+    //glColor3f(0.7,0,0);
+    glPushMatrix();
+    glTranslatef( 1, 200, 15);
+    gluDisk(Disk, 0, 1, 30, 6);
+    glPopMatrix();
+}
 
 void drawRoadLines()
 {
@@ -997,10 +1010,12 @@ void display(void)
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     gluLookAt(view[0],view[1],view[2],look[0],look[1],look[2],0.0,1.0,0.0);
     earth();
+
     compound();
     house();
     drawRoad();
     drawRoadLines();
+
 
     glPushMatrix();
     glRotatef(x,1.0,0.0,0.0);
@@ -1021,7 +1036,7 @@ void display(void)
     {
         drawSun(1);
     }
-
+    car();
 
 
     glFlush();
