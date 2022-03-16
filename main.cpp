@@ -2031,7 +2031,7 @@ void Keyboard(unsigned char key,int x,int y)
     case 'm':
 
         glutDestroyWindow(1);
-        glutInitWindowSize(1366,768);
+        glutInitWindowSize(1916,1076);
         glutInitWindowPosition(0,0);
         glutCreateWindow("3D Farm House");
         glutKeyboardFunc(Keyboard);
@@ -2052,7 +2052,7 @@ void Keyboard(unsigned char key,int x,int y)
     case 'N':
     case 'n':
         glutDestroyWindow(1);
-        glutInitWindowSize(1366,768);
+        glutInitWindowSize(1916,1076);
         glutInitWindowPosition(0,0);
         glutCreateWindow("3D Farm House");
         glutKeyboardFunc(Keyboard);
@@ -2201,7 +2201,7 @@ int main(int argc,char**argv)
     printf("**<<Press A for go left slow & D for go right>>**\n");
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH);
-    glutInitWindowSize(1920,1076);
+    glutInitWindowSize(1916,1076);
     glutInitWindowPosition(0,0);
     glutCreateWindow("3D Farm House");
     glutKeyboardFunc(Keyboard);
