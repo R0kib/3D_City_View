@@ -827,6 +827,26 @@ void drawRoad()
 }
 
 
+void drawRoad2()
+{
+    GLfloat	ambient1[]= {0.7, 0.7, 0.7, 0.7};
+    GLfloat specular1[]= {0,0,0,0}; //1111
+    GLfloat diffuse1[]= {0,0,0,0};
+    GLfloat mat_shininess[]= {0}; //50
+    matprop(ambient1,diffuse1,specular1,mat_shininess);
+
+    glPushMatrix();
+
+    glRotated(0, 0, 0, 1);
+    //glRotated(1, 90,1,0);
+    //glScaled(1, 1000, 5); //x=height  , y=length, z= wide
+    glScaled(1, -20, 8); //x=length  , y=height, z=
+    glTranslated(0, 0, 2); // x= height , y = , z=
+    glutSolidCube(0.5);
+    glPopMatrix();
+}
+
+
 void drawRoadLines()
 {
     GLfloat	ambient1[]= {0, 0, 0, 0};
@@ -1204,7 +1224,7 @@ void display(void)
     //Left Road
     glPushMatrix();
     glRotated(20,-10,0,1);
-    drawRoad();
+    drawRoad2();
     glPopMatrix();
 
     //right Road
