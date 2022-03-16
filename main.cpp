@@ -1856,7 +1856,6 @@ void display(void)
     glPopMatrix();
 
 
-
     //5 storey building
     glPushMatrix();
     glTranslated(40, 0, -60);
