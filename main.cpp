@@ -820,8 +820,8 @@ void drawRoad()
 
     glRotated(90, 0, 0, 1);
     //glRotated(1, 90,1,0);
-    glScaled(1, 1000, 5); //x=depth  , y=length, z= wide
-    glTranslated(0.2, 0, 2); // x= height , y =
+    glScaled(1, 1000, 5); //x=height  , y=length, z= position change
+    glTranslated(0.2, 0, 2); // x= move up/down , y =move left/right, z=
     glutSolidCube(0.5);
     glPopMatrix();
 }
@@ -837,11 +837,10 @@ void drawRoad2()
 
     glPushMatrix();
 
-    glRotated(0, 0, 0, 1);
+    glRotated(90, 0, 0, 1);
     //glRotated(1, 90,1,0);
-    //glScaled(1, 1000, 5); //x=height  , y=length, z= wide
-    glScaled(1, -20, 8); //x=length  , y=height, z=
-    glTranslated(0, 0, 2); // x= height , y = , z=
+    glScaled(1, 50, 0); //x=depth  , y=length, z= length
+    glTranslated(0, 5, 2); // x= height , y = , z=
     glutSolidCube(0.5);
     glPopMatrix();
 }
@@ -862,7 +861,7 @@ void drawRoadLines()
 
         glRotated(90, 0, 0, 1);
         //glRotated(1, 90,1,0);
-        glScaled(1, 5, 0.5); //x=  , y=length, z= wide
+        glScaled(1.2, 5, 0.5); //x=  , y=length, z= wide
         glTranslated(0.2, i, 20); // x= height , y =
         glutSolidCube(0.5);
         glPopMatrix();
@@ -1212,6 +1211,40 @@ void display(void)
     glTranslated(0,0,20);
     drawRoad();
     glPopMatrix();
+    glPushMatrix();
+    glTranslated(0,0,20);
+    drawRoadLines();
+    glPopMatrix();
+
+    //front Road2
+    glPushMatrix();
+    glTranslated(0,0,40);
+    drawRoad();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(0,0,40);
+    drawRoadLines();
+    glPopMatrix();
+
+    //front Road3
+    glPushMatrix();
+    glTranslated(0,0,60);
+    drawRoad();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(0,0,60);
+    drawRoadLines();
+    glPopMatrix();
+
+    //front Road4
+    glPushMatrix();
+    glTranslated(0,0,80);
+    drawRoad();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(0,0,80);
+    drawRoadLines();
+    glPopMatrix();
 
 
     //Back road
@@ -1219,8 +1252,44 @@ void display(void)
     glTranslated(0,0,-20);
     drawRoad();
     glPopMatrix();
+    glPushMatrix();
+    glTranslated(0,0,-20);
+    drawRoadLines();
+    glPopMatrix();
+
+    //back Road2
+    glPushMatrix();
+    glTranslated(0,0,-40);
+    drawRoad();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(0,0,-40);
+    drawRoadLines();
+    glPopMatrix();
+
+    //back Road3
+    glPushMatrix();
+    glTranslated(0,0,-60);
+    drawRoad();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(0,0,-60);
+    drawRoadLines();
+    glPopMatrix();
+
+    //back Road4
+    glPushMatrix();
+    glTranslated(0,0,-80);
+    drawRoad();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(0,0,-80);
+    drawRoadLines();
+    glPopMatrix();
 
 
+
+/*
     //Left Road
     glPushMatrix();
     glRotated(20,-10,0,1);
@@ -1232,7 +1301,7 @@ void display(void)
      glRotated(-40,0,0,1);
      //drawRoad();
     glPopMatrix();
-
+*/
 
 
     glPushMatrix();
@@ -1366,9 +1435,196 @@ void display(void)
     //front home finished
 
 
+    //front home 2 started
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-20, 0, 40);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, 40);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+     //5 storey building
+    glPushMatrix();
+    glTranslated(40, 0, 40);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(20, 0, 40);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+    //front home 2 finished
+
+
+    //front home 3 started
+
+    //3 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, 60);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glTranslated(0, 4, 0);
+    house(0.3, 0.3, 0.1, 0.3, 0.3, 0.1);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.3, 0.1, 0.3, 0.3, 0.1);
+
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-20, 0, 60);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+     //5 storey building
+    glPushMatrix();
+    glTranslated(20, 0, 60);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+
+    //3 storey building
+    glPushMatrix();
+    glTranslated(40, 0, 60);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glTranslated(0, 4, 0);
+    house(0.3, 0.3, 0.1, 0.3, 0.3, 0.1);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.3, 0.1, 0.3, 0.3, 0.1);
+    glPopMatrix();
+
+    //front home 3 finished
+
+
+
+    //front home 4 started
+
+    //3 storey building
+    glPushMatrix();
+    glTranslated(-20, 0, 80);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glTranslated(0, 4, 0);
+    house(0.3, 0.3, 0.1, 0.3, 0.3, 0.1);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.3, 0.1, 0.3, 0.3, 0.1);
+
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, 80);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+     //5 storey building
+    glPushMatrix();
+    glTranslated(40, 0, 80);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+
+    //3 storey building
+    glPushMatrix();
+    glTranslated(20, 0, 80);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glTranslated(0, 4, 0);
+    house(0.3, 0.3, 0.1, 0.3, 0.3, 0.1);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.3, 0.1, 0.3, 0.3, 0.1);
+    glPopMatrix();
+
+    //front home 4 finished
+
 
 
     //back home start
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-80, 0, -20);
+    house(0.3, 0, 0, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-60, 0, -20);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
 
     //1 storey building
     glPushMatrix();
@@ -1417,7 +1673,330 @@ void display(void)
     house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
     glPopMatrix();
 
+    //1 storey building
+    glPushMatrix();
+    glTranslated(60, 0, -20);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(80, 0, -20);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
     //back home finished
+
+
+
+    //back home 2 start
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-80, 0, -40);
+    house(0.3, 0, 0, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-60, 0, -40);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-20, 0, -40);
+    house(0.3, 0, 0, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, -40);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
+
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(40, 0, -40);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(20, 0, -40);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(80, 0, -40);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(60, 0, -40);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+    //back home 2 finished
+
+
+
+    //back home 3 start
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-80, 0, -60);
+    house(0.3, 0, 0, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-60, 0, -60);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, -60);
+    house(0.3, 0, 0, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-20, 0, -60);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
+
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(20, 0, -60);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(40, 0, -60);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(60, 0, -60);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(80, 0, -60);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+    //back home 3 finished
+
+
+
+
+    //back home 4 start
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-60, 0, -80);
+    house(0.3, 0, 0, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-80, 0, -80);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-20, 0, -80);
+    house(0.3, 0, 0, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, -80);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
+
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(40, 0, -80);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(20, 0, -80);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(80, 0, -80);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(60, 0, -80);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+    //back home 4 finished
 
 
     glFlush();
