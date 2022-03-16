@@ -6,7 +6,7 @@
 #include<iostream>
 #include <cstdlib>
 
-double view[3]= {2, 4.3, 15.9};
+double view[3]= {5, 30, 50};
 double look[3]= {2, 2, 2};
 int flag=-1;
 double sun = 1;
@@ -611,11 +611,11 @@ void gate(void)
 
 }
 
-void house(void)
+void house(double x, double y, double z, double door_x, double door_y, double door_z)
 {
     GLfloat mat_ambient[]= {1,0,0,1};
     GLfloat mat_specular[]= {1,1,1,1};
-    GLfloat mat_diffuse[]= {1,0,.7,1};
+    GLfloat mat_diffuse[]= {0.2, 0.2, 0.2, 0};
     GLfloat mat_shininess[]= {50};
 
     matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
@@ -654,7 +654,7 @@ void house(void)
 
     GLfloat ambient1[]= {1,0,0,1};
     GLfloat specular1[]= {1,1,1,1};
-    GLfloat diffuse1[]= {1.000, 0.271, 0.000,1};
+    GLfloat diffuse1[]= {x, y, z,1};
     GLfloat shininess1[]= {50};
     matprop(ambient1,diffuse1,specular1,shininess1);
 
@@ -760,9 +760,9 @@ void house(void)
     window();
     solar();
 
-    GLfloat	ambient[]= {1,0.5,.5,1};
+    GLfloat ambient[]= {1,0,0,1};
     GLfloat specular[]= {1,1,1,1};
-    GLfloat diffuse[]= {0.502, 0.502, 0.000,1};
+    GLfloat diffuse[]= {door_x, door_y, door_z, 1};
     matprop(ambient,diffuse,specular,mat_shininess);
     //main door
     glPushMatrix();
@@ -1088,25 +1088,18 @@ void makeClouds()
 {
 
     glPushMatrix();
-    glTranslatef( -8.2, 3.8, -10.0);
-    drawCloud();
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslatef( 5.2, 3.2, -10.0);
+    glTranslatef( -48.2, 18.8, -20.0);
     drawCloud();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef( 17.0, 1.0, -10.0);
+    glTranslatef( -48.2, 18.8, -10.0);
     drawCloud();
     glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef( 24.0, 5.5, -10.0);
-    drawCloud();
-    glPopMatrix();
+
+
+
 }
 
 //new tree adding
@@ -1182,10 +1175,45 @@ void display(void)
     gluLookAt(view[0],view[1],view[2],look[0],look[1],look[2], 0.0, 1.0, 0.0);
     earth();
     compound();
-    house();
+    house(0.2 , 1, 1, 0, 0, 0);
+    glPushMatrix();
+    glTranslated(0,4,0);
+    house(0.2, 0.1, 0.8, 0.2, 0.1, 0.8);
+    glPopMatrix();
 
+
+   // Middle Road
     drawRoad();
     drawRoadLines();
+
+
+    //front Road
+    glPushMatrix();
+    glTranslated(0,0,20);
+    drawRoad();
+    glPopMatrix();
+
+
+    //Back road
+    glPushMatrix();
+    glTranslated(0,0,-20);
+    drawRoad();
+    glPopMatrix();
+
+
+    //Left Road
+    glPushMatrix();
+    glRotated(20,-10,0,1);
+    drawRoad();
+    glPopMatrix();
+
+    //right Road
+     glPushMatrix();
+     glRotated(-40,0,0,1);
+     //drawRoad();
+    glPopMatrix();
+
+
 
     glPushMatrix();
     glRotatef(x,1.0,0.0,0.0);
@@ -1216,18 +1244,160 @@ void display(void)
         drawStar();
     }
 
-    //adding more houses
+
+    //middle line start
+
+    //1 storey building
+    glPushMatrix();
     glTranslated(-20, 0, 0);
-    house();
+    house(0.3, 0, 0, 0, 0, 0);
     compound();
+    glPopMatrix();
 
-    glTranslated(40, 0, 0);
-    house();
-    compound();
 
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, 0);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
+
+
+
+    //1 storey building
+    glPushMatrix();
     glTranslated(20, 0, 0);
-    house();
+    house(0.3, 0.3, 0.1, 0, 0, 0);
     compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(40, 0, 0);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+    //middle home finished
+
+
+    //front home started
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, 20);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-20, 0, 20);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+     //5 storey building
+    glPushMatrix();
+    glTranslated(20, 0, 20);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(40, 0, 20);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+    //front home finished
+
+
+
+
+    //back home start
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(-40, 0, -20);
+    house(0.3, 0, 0, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(-20, 0, -20);
+    house(0.3, 0.6 , 0.9, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glTranslated(0, 4, 0);
+    house(0.3, 0.6 , 0.9 , 0.3, 0.6 , 0.9);
+    glPopMatrix();
+
+
+
+    //1 storey building
+    glPushMatrix();
+    glTranslated(20, 0, -20);
+    house(0.3, 0.3, 0.1, 0, 0, 0);
+    compound();
+    glPopMatrix();
+
+
+
+    //5 storey building
+    glPushMatrix();
+    glTranslated(40, 0, -20);
+    house(0.9, 0.4 , 1, 0, 0, 0);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glTranslated(0, 4, 0);
+    house(0.9, 0.4 , 1 , 0.9, 0.4 , 1);
+    glPopMatrix();
+
+    //back home finished
 
 
     glFlush();
@@ -1306,40 +1476,40 @@ void Keyboard(unsigned char key,int x,int y)
     //go up
     case 'Z':
     case 'z':
-        view[1]+=.1;
+        view[1]+=2.5;
         glutPostRedisplay();
         break;
     //go down
     case 'X':
     case 'x':
-        view[1]-=.1;
+        view[1]-=2.5;
         glutPostRedisplay();
         break;
 
     //go inside
     case 'W':
     case 'w':
-        view[2]-=.1;
+        view[2]-=2.5;
         glutPostRedisplay();
         break;
     //go outside
     case 'S':
     case 's':
-        view[2]+=.1;
+        view[2]+=2.5;
         glutPostRedisplay();
         break;
 
     //go left
     case 'A':
     case 'a':
-        view[0]-=.2;
+        view[0]-=2.5;
         glutPostRedisplay();
         break;
 
     //go right
     case 'D':
     case 'd':
-        view[0]+=.1;
+        view[0]+=2.5;
         glutPostRedisplay();
         break;
 
@@ -1433,7 +1603,7 @@ int main(int argc,char**argv)
     printf("**<<Press A for go left slow & D for go right>>**\n");
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH);
-    glutInitWindowSize(1366,768);
+    glutInitWindowSize(1920,1076);
     glutInitWindowPosition(0,0);
     glutCreateWindow("3D Farm House");
     glutKeyboardFunc(Keyboard);
