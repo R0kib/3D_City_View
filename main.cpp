@@ -871,6 +871,7 @@ void drawSun(double z)
     glPopMatrix();
 }
 
+
 //making star
 void makeStar()
 {
