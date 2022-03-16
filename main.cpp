@@ -853,19 +853,19 @@ void drawRoadLines()
 
 
 //draw Sun
-void drawSun(double z)
+void drawSun(double x, double y, double z)
 {
 
     GLfloat mat_ambient[]= {0, 0, 0, 0};
-    GLfloat mat_specular[]= {0.8 ,0.8 , z,0};
-    GLfloat mat_diffuse[]= {0.8 , 0.8 , z,0};
+    GLfloat mat_specular[]= {x , y, z,0};
+    GLfloat mat_diffuse[]= {x, y, z,0};
     GLfloat mat_shininess[]= {50};
     matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
 
 
     glPushMatrix();
-    glTranslatef( 1.5, 20, -20.0);
-    gluDisk(Disk, 0, 2, 32, 8);
+    glTranslatef( 1.5, 40, -40.0);
+    gluDisk(Disk, 0, 3, 32, 8);
 
 
     glPopMatrix();
@@ -879,12 +879,11 @@ void makeStar()
     GLfloat mat_ambient[]= {0, 0, 0, 0};
     GLfloat mat_specular[]= {0.8 ,0.8 , 1, 0};
     GLfloat mat_diffuse[]= {0.8 , 0.8 , 1, 0};
-    GLfloat mat_shininess[]= {50};
+    GLfloat mat_shininess[]= {500};
     matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
 
 
     glPushMatrix();
-    glTranslatef( -23.5, 30, -20.0);
     gluDisk(Disk, 0, .1, 20, 8);
     glPopMatrix();
 }
@@ -892,49 +891,165 @@ void makeStar()
 void drawStar()
 {
 
-    glTranslated(-15,5,0);
+
+    glPushMatrix();
+    glTranslated(-95, 25, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(-8,-3,0);
+    glPushMatrix();
+    glTranslated(-89, 35, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(0,0,0);
+
+    glPushMatrix();
+    glTranslated(-82, 29, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(9,-5,0);
+    glPushMatrix();
+    glTranslated(-75, 25, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(15,5,0);
+    glPushMatrix();
+    glTranslated(-67, 35, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(13,-8, 0);
+    glPushMatrix();
+    glTranslated(-58, 45, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(19,-12, 0);
+    glPushMatrix();
+    glTranslated(-45, 39, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(19,-12, 0);
+    glPushMatrix();
+    glTranslated(-39, 25, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(22, 15, 0);
+
+    glPushMatrix();
+    glTranslated(-30, 55, -40);
     makeStar();
+    glPopMatrix();
 
-
-    glTranslated(26,-3,0);
+    glPushMatrix();
+    glTranslated(-22, 35, -40);
     makeStar();
+    glPopMatrix();
 
-    glTranslated(34,2,0);
+    glPushMatrix();
+    glTranslated(-15, 25, -40);
     makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-22, 32, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-15, 65, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-10, 35, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-1, 59, -40);
+    makeStar();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(95, 25, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(89, 35, -40);
+    makeStar();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(82, 29, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(75, 25, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(67, 35, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(58, 45, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(45, 39, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(39, 25, -40);
+    makeStar();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(30, 55, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(22, 35, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(15, 25, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(22, 32, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(15, 65, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(10, 35, -40);
+    makeStar();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(1, 59, -40);
+    makeStar();
+    glPopMatrix();
 
 
 
-    //check if loop is work then make stars using loop
-   /* for(int x=-30, y=-6; x<70 && y<20 ; x+=10, y+=.5)
-    {
 
-        glTranslated(x, y, 0);
-        makeStar();
-    }*/
 }
 
 void drawCloud()
@@ -1086,12 +1201,18 @@ void display(void)
 
     if(sun == 1)
     {
-        drawSun(0.1);
+        drawSun(0.8, 0.8, 0.1);
         makeClouds();
     }
     else if(sun==0)
     {
-        drawSun(1);
+        drawSun(0.8, 0.8, 1);
+
+        glPushMatrix();
+        glTranslated(1, 1, .5);
+        drawSun(0,0,0);
+        glPopMatrix();
+
         drawStar();
     }
 
