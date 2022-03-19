@@ -17,6 +17,7 @@ void gate(void);
 void drawRoad();
 void drawRoadLines();
 void drawSun();
+void drawCar();
 double angle=0,speed=5,maino=0,tro=0,romo=0,mgo=0;
 //declarating quadric objects
 GLUquadricObj *Cylinder;
@@ -827,24 +828,6 @@ void drawRoad()
 }
 
 
-void drawRoad2()
-{
-    GLfloat	ambient1[]= {0.7, 0.7, 0.7, 0.7};
-    GLfloat specular1[]= {0,0,0,0}; //1111
-    GLfloat diffuse1[]= {0,0,0,0};
-    GLfloat mat_shininess[]= {0}; //50
-    matprop(ambient1,diffuse1,specular1,mat_shininess);
-
-    glPushMatrix();
-
-    glRotated(90, 0, 0, 1);
-    //glRotated(1, 90,1,0);
-    glScaled(1, 50, 0); //x=depth  , y=length, z= length
-    glTranslated(0, 5, 2); // x= height , y = , z=
-    glutSolidCube(0.5);
-    glPopMatrix();
-}
-
 
 void drawRoadLines()
 {
@@ -870,6 +853,76 @@ void drawRoadLines()
 
 }
 
+
+//make Car
+void CarBlock(double length, double position, double r, double g, double b)
+{
+
+    GLfloat	ambient1[]= {0.7, 0.7, 0.7, 0.7};
+    GLfloat specular1[]= {r, g, b, 0};
+    GLfloat diffuse1[]= {r, g, b, 0};
+    GLfloat mat_shininess[]= {50};
+    matprop(ambient1,diffuse1,specular1,mat_shininess);
+
+    glPushMatrix();
+    glRotated(90, 0, 0, 1);
+    glScaled(4, length , 6.2); //x=height  , y=length, z= position change
+    glTranslated(0.3, position, 1.7); // x= move up/down , y =move left/right, z= move forward/backward
+    glutSolidCube(0.25);
+    glPopMatrix();
+
+}
+
+void makeWheel()
+{
+    GLfloat mat_ambient[]= {0, 0, 0, 0};
+    GLfloat mat_specular[]= {0 , 0, 0, 0};
+    GLfloat mat_diffuse[]= {0, 0, 0,0};
+    GLfloat mat_shininess[]= {50};
+    matprop(mat_ambient,mat_diffuse,mat_specular,mat_shininess);
+
+
+    glPushMatrix();
+    glTranslatef( 0.5, 0.85, 11.316);
+    gluDisk(Disk, .1, .3, 32, 8);
+
+    glPopMatrix();
+}
+
+void buildCar(double r, double g, double b)
+{
+    CarBlock(8, 0 , r, g, b);
+    glPushMatrix();
+    glTranslated(.25, 0.9, 0);
+    CarBlock(5.5, 0.1, r+.2, g+.3, b+.4);
+    glPopMatrix();
+
+    //front right wheel
+    makeWheel();
+
+    //rear right wheel
+    glPushMatrix();
+    glTranslated(-1, 0, 0);
+    makeWheel();
+    glPopMatrix();
+
+}
+
+
+void drawCar()
+{
+    buildCar(0, .5, .2);
+
+    glPushMatrix();
+    glTranslated(-10, 0, 0);
+    buildCar(0.6, 0.5, 0.8);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(10, 0, 0);
+    buildCar(0.3, 0.2, 0.8);
+    glPopMatrix();
+}
 
 //draw Sun
 void drawSun(double x, double y, double z)
@@ -1205,6 +1258,9 @@ void display(void)
     drawRoad();
     drawRoadLines();
 
+    //draw car
+    drawCar();
+
 
     //front Road
     glPushMatrix();
@@ -1286,22 +1342,6 @@ void display(void)
     glTranslated(0,0,-80);
     drawRoadLines();
     glPopMatrix();
-
-
-
-/*
-    //Left Road
-    glPushMatrix();
-    glRotated(20,-10,0,1);
-    drawRoad2();
-    glPopMatrix();
-
-    //right Road
-     glPushMatrix();
-     glRotated(-40,0,0,1);
-     //drawRoad();
-    glPopMatrix();
-*/
 
 
     glPushMatrix();
