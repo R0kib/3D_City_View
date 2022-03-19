@@ -855,7 +855,7 @@ void drawRoadLines()
 
 
 //make Car
-void CarBlock(double length, double position, double r, double g, double b)
+void CarBlock(double cubeSize ,double length, double position, double z, double r, double g, double b)
 {
 
     GLfloat	ambient1[]= {0.7, 0.7, 0.7, 0.7};
@@ -867,9 +867,11 @@ void CarBlock(double length, double position, double r, double g, double b)
     glPushMatrix();
     glRotated(90, 0, 0, 1);
     glScaled(4, length , 6.2); //x=height  , y=length, z= position change
-    glTranslated(0.3, position, 1.7); // x= move up/down , y =move left/right, z= move forward/backward
-    glutSolidCube(0.25);
+    glTranslated(0.3, position, z); // x= move up/down , y =move left/right, z= move forward/backward
+    glutSolidCube(cubeSize);
     glPopMatrix();
+
+
 
 }
 
@@ -891,11 +893,39 @@ void makeWheel()
 
 void buildCar(double r, double g, double b)
 {
-    CarBlock(8, 0 , r, g, b);
+    //down part
+    CarBlock(0.25, 8, 0 , 1.7, r, g, b);
+    //upper part
     glPushMatrix();
     glTranslated(.25, 0.9, 0);
-    CarBlock(5.5, 0.1, r+.2, g+.3, b+.4);
+    CarBlock(0.25, 5.5, 0.1, 1.7, r+.2, g+.3, b+.4);
     glPopMatrix();
+
+    //right front window of car
+    glPushMatrix();
+    glTranslated(.5, 0.9, 0);
+    CarBlock(0.13, 3, 0.15, 1.77, 0, 0, 0);
+    glPopMatrix();
+
+    //left front window of car
+    glPushMatrix();
+    glTranslated(.5, 0.9, 0);
+    CarBlock(0.13, 3, 0.15, 1.63, 0, 0, 0);
+    glPopMatrix();
+
+    //right back window of car
+    glPushMatrix();
+    glTranslated(-.25, 0.9, 0);
+    CarBlock(0.13, 3, 0.15, 1.77, 0, 0, 0);
+    glPopMatrix();
+
+    //left back window of car
+    glPushMatrix();
+    glTranslated(-.25, 0.9, 0);
+    CarBlock(0.13, 3, 0.15, 1.63, 0, 0, 0);
+    glPopMatrix();
+
+
 
     //front right wheel
     makeWheel();
