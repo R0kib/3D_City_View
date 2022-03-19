@@ -2414,18 +2414,23 @@ void Keyboard(unsigned char key,int x,int y)
 
 int main(int argc,char**argv)
 {
+
+    printf("\t\t\t LOLLYPOP TROOPS \n\n");
+    printf("Keyboard Input: \n");
     printf("**<<Press G for Gate on & off>>**\n");
     printf("**<<Press P for Main door & O for insider door on & off>>**\n");
     printf("**<<Press I for inside view & T for top view >>**\n");
     printf("**<<Press B for back view & F for front view>>**\n");
     printf("**<<Press Q for Fan on & off>>**\n");
-    printf("**<<Press W for go inside slow & S for back outside>>**\n");
+    printf("**<<Press W for zoom in & S for zoom out>>**\n");
     printf("**<<Press A for go left slow & D for go right>>**\n");
+    printf("**<<Press Z for upper view & X for lower view>>**\n");
+    printf("**<<Press M for Morning view & N for Night view>>**\n");
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH);
     glutInitWindowSize(1916,1076);
     glutInitWindowPosition(0,0);
-    glutCreateWindow("3D Farm House");
+    glutCreateWindow("3D City View");
     glutKeyboardFunc(Keyboard);
     myinit();
     init();
