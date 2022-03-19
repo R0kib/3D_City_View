@@ -1268,8 +1268,6 @@ void drawStar()
     glPopMatrix();
 
 
-
-
 }
 
 void drawCloud()
@@ -2255,7 +2253,7 @@ void Keyboard(unsigned char key,int x,int y)
         glutDestroyWindow(1);
         glutInitWindowSize(1916,1076);
         glutInitWindowPosition(0,0);
-        glutCreateWindow("3D Farm House");
+        glutCreateWindow("3D City View");
         glutKeyboardFunc(Keyboard);
         myinit();
         init();
@@ -2276,7 +2274,7 @@ void Keyboard(unsigned char key,int x,int y)
         glutDestroyWindow(1);
         glutInitWindowSize(1916,1076);
         glutInitWindowPosition(0,0);
-        glutCreateWindow("3D Farm House");
+        glutCreateWindow("3D City View");
         glutKeyboardFunc(Keyboard);
         myinit();
         init();
